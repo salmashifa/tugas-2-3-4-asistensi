@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Sistem Informasi Al-Ghifari</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -33,38 +34,6 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
-        /* Nav */
-        nav {
-            background: var(--white);
-            border-bottom: 1px solid var(--neutral-100);
-            box-shadow: var(--shadow-sm);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .nav-inner {
-            max-width: 1100px; margin: 0 auto;
-            padding: 0 2rem;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 64px;
-        }
-        .nav-logo {
-            display: flex; align-items: center; gap: .7rem;
-            font-weight: 800; font-size: 1.1rem; color: var(--blue-deep);
-            text-decoration: none;
-        }
-        .nav-logo-icon {
-            width: 36px; height: 36px; border-radius: 10px;
-            background: linear-gradient(135deg, var(--blue-deep), var(--blue-light));
-            display: grid; place-items: center;
-        }
-        .nav-logo-icon svg { width: 20px; height: 20px; fill: white; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            text-decoration: none; font-size: .9rem; font-weight: 500;
-            color: var(--neutral-600); transition: color .2s;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--blue-deep); }
-        .nav-links a.active { border-bottom: 2px solid var(--blue-mid); padding-bottom: 2px; }
 
         /* Hero */
         .hero {
@@ -107,9 +76,7 @@
         /* Main */
         .main { max-width: 1100px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
 
-        .section-title {
-            text-align: center; margin-bottom: 2.5rem;
-        }
+        .section-title { text-align: center; margin-bottom: 2.5rem; }
         .section-title span {
             display: inline-block;
             background: var(--blue-pale);
@@ -154,27 +121,21 @@
             box-shadow: var(--shadow-sm);
             transition: transform .25s, box-shadow .25s;
         }
-        .stat-box:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
+        .stat-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
         .stat-icon {
             width: 48px; height: 48px; border-radius: 14px;
             background: var(--blue-pale);
             display: grid; place-items: center; margin: 0 auto .9rem;
         }
         .stat-icon svg { width: 24px; height: 24px; stroke: var(--blue-deep); fill: none; stroke-width: 1.8; }
-        .stat-value {
-            font-size: 1.6rem; font-weight: 800;
-            color: var(--blue-deep); line-height: 1;
-        }
+        .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--blue-deep); line-height: 1; }
         .stat-label {
             font-size: .8rem; font-weight: 500;
             color: var(--neutral-300); margin-top: .35rem;
             text-transform: uppercase; letter-spacing: .05em;
         }
 
-        /* Anggota */
+        /* Team */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -188,68 +149,41 @@
             box-shadow: var(--shadow-sm);
             transition: transform .3s, box-shadow .3s;
         }
-        .member-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
+        .member-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
         .member-header {
             background: linear-gradient(135deg, var(--blue-deep), var(--blue-mid));
             padding: 2rem; text-align: center;
-            position: relative;
         }
         .member-avatar {
             width: 80px; height: 80px; border-radius: 50%;
-            background: rgba(255,255,255,.2);
             border: 3px solid rgba(255,255,255,.5);
-            display: grid; place-items: center; margin: 0 auto;
-            font-size: 2rem; font-weight: 800;
-            color: white; font-family: 'Lora', serif;
+            display: block; margin: 0 auto;
+            object-fit: cover; object-position: center top;
         }
         .member-body { padding: 1.6rem; text-align: center; }
-        .member-name {
-            font-size: 1.1rem; font-weight: 700;
-            color: var(--neutral-800); margin-bottom: .3rem;
-        }
+        .member-name { font-size: 1.1rem; font-weight: 700; color: var(--neutral-800); margin-bottom: .3rem; }
         .member-nim {
             display: inline-block;
-            background: var(--blue-pale);
-            color: var(--blue-deep);
+            background: var(--blue-pale); color: var(--blue-deep);
             font-size: .78rem; font-weight: 600;
             border-radius: 99px; padding: .25rem .9rem;
-            margin-bottom: .9rem;
-        }
-        .member-role {
-            font-size: .88rem; color: var(--neutral-600);
-            line-height: 1.5;
-        }
-        .member-divider {
-            width: 32px; height: 2px; background: var(--blue-pale);
-            border-radius: 99px; margin: .9rem auto;
+            margin-bottom: .5rem;
         }
         .member-github {
-            display: inline-flex;
-            align-items: center;
-            gap: .45rem;
+            display: inline-flex; align-items: center; gap: .45rem;
             margin-top: .5rem;
-            background: var(--neutral-800);
-            color: white;
-            font-size: .8rem;
-            font-weight: 600;
+            background: var(--neutral-800); color: white;
+            font-size: .8rem; font-weight: 600;
             text-decoration: none;
-            padding: .35rem .9rem;
-            border-radius: 99px;
+            padding: .35rem .9rem; border-radius: 99px;
             transition: background .2s, transform .2s;
         }
-        .member-github:hover {
-            background: var(--blue-deep);
-            transform: translateY(-2px);
-        }
-        .member-github svg {
-            width: 16px;
-            height: 16px;
-        }
+        .member-github:hover { background: var(--blue-deep); transform: translateY(-2px); }
+        .member-github svg { width: 16px; height: 16px; }
+        .member-divider { width: 32px; height: 2px; background: var(--blue-pale); border-radius: 99px; margin: .9rem auto; }
+        .member-role { font-size: .88rem; color: var(--neutral-600); line-height: 1.5; }
 
-        /* info box */
+        /* Info Box */
         .info-box {
             background: linear-gradient(135deg, var(--blue-pale) 0%, #eef4ff 100%);
             border: 1px solid #c5dbff;
@@ -264,20 +198,10 @@
             display: grid; place-items: center;
         }
         .info-box-icon svg { width: 26px; height: 26px; stroke: white; fill: none; stroke-width: 1.8; }
-        .info-box-content h3 {
-            font-size: 1.1rem; font-weight: 700;
-            color: var(--blue-deep); margin-bottom: .5rem;
-        }
-        .info-box-content p {
-            font-size: .95rem; color: var(--neutral-600); line-height: 1.7;
-        }
+        .info-box-content h3 { font-size: 1.1rem; font-weight: 700; color: var(--blue-deep); margin-bottom: .5rem; }
+        .info-box-content p { font-size: .95rem; color: var(--neutral-600); line-height: 1.7; }
 
-        .member-avatar {
-            object-fit: cover;      
-            object-position: center top; 
-        }
-
-        /* FOOTER */
+        /* Footer */
         footer {
             background: var(--white);
             border-top: 1px solid var(--neutral-100);
@@ -285,7 +209,6 @@
             padding: 1.8rem;
             font-size: .85rem; color: var(--neutral-300);
         }
-        footer strong { color: var(--blue-deep); }
 
         /* Animasi */
         @keyframes fadeUp {
@@ -297,40 +220,37 @@
         .hero h1   { animation-delay: .15s; }
         .hero p    { animation-delay: .25s; }
         .hero-divider { animation-delay: .35s; }
-
-        .about-card, .stats, .team-grid, .info-box {
-            animation: fadeUp .7s ease both;
-            animation-delay: .1s;
-        }
+        .about-card, .stats, .team-grid, .info-box { animation: fadeUp .7s ease both; animation-delay: .1s; }
 
         @media (max-width: 600px) {
             .about-card { padding: 1.6rem 1.4rem; }
             .info-box { flex-direction: column; }
-            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav -->
-    <nav>
-        <div class="nav-inner">
-            <a href="/" class="nav-logo">
-                <div class="nav-logo-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="flex items-center gap-2 text-blue-800 font-extrabold text-lg" style="text-decoration:none;">
+                    <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1a4fa0,#5b9df5);display:grid;place-items:center;">
+                        <svg style="width:20px;height:20px;fill:white;" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    NabilaShifa
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="/" class="text-slate-600 hover:text-blue-700 font-medium text-sm transition" style="text-decoration:none;">Home</a>
+                    <a href="/about" class="text-blue-700 font-semibold text-sm border-b-2 border-blue-500 pb-0.5" style="text-decoration:none;">About</a>
+                    <a href="/contact" class="text-slate-600 hover:text-blue-700 font-medium text-sm transition" style="text-decoration:none;">Contact</a>
                 </div>
-                NabilaShifa
-            </a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about" class="active">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="hero">   
+    <section class="hero">
         <p class="hero-badge">Tentang Kami</p>
         <h1>Kelompok Asistensi</h1>
         <p>Mahasiswi Program Studi Sistem Informasi.</p>
@@ -340,7 +260,6 @@
     <!-- Main -->
     <main class="main">
 
-        {{-- Tentang Proyek --}}
         <div class="section-title">
             <span>Proyek Kami</span>
             <h2>Tentang Halaman Ini</h2>
@@ -362,13 +281,6 @@
                 <div class="stat-value">2</div>
                 <div class="stat-label">Anggota Tim</div>
             </div>
-            <!-- <div class="stat-box">
-                <div class="stat-icon">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
-                </div>
-                <div class="stat-value">1</div>
-                <div class="stat-label">Proyek Aktif</div>
-            </div> -->
             <div class="stat-box">
                 <div class="stat-icon">
                     <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -385,7 +297,6 @@
             </div>
         </div>
 
-        <!-- Anggota -->
         <div class="section-title">
             <span>Tim Kelompok</span>
             <h2>Anggota Kami</h2>
@@ -427,7 +338,7 @@
             </div>
         </div>
 
-        <!-- info box -->
+        <!-- Info Box -->
         <div class="info-box">
             <div class="info-box-icon">
                 <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -440,9 +351,8 @@
 
     </main>
 
-    <!-- FOOTER  -->
     <footer>
-        &copy; {{ date('Y') }}  · NabilaShifa · 
+        &copy; {{ date('Y') }} · NabilaShifa ·
     </footer>
 
 </body>
