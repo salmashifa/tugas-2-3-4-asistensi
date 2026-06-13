@@ -6,30 +6,34 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('cache', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->mediumText('value');
-            $table->integer('expiration')->index();
+        Schema::create('kelompoks', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_kelompok');
+            $table->string('mata_kuliah');
+            $table->string('dosen_pembimbing')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->enum('status', ['aktif', 'selesai', 'pending'])->default('aktif');
+            $table->timestamps();
         });
 
-        Schema::create('cache_locks', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->string('owner');
-            $table->integer('expiration')->index();
+        Schema::create('anggota_kelompoks', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('kelompok_id')->constrained('kelompoks')->onDelete('cascade');
+            $table->string('nama');
+            $table->string('nim')->unique();
+            $table->string('email')->nullable();
+            $table->string('github')->nullable();
+            $table->string('foto')->nullable();
+            $table->string('peran')->default('Anggota'); // Ketua / Anggota
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('cache');
-        Schema::dropIfExists('cache_locks');
+        Schema::dropIfExists('anggota_kelompoks');
+        Schema::dropIfExists('kelompoks');
     }
-};
+}; 
