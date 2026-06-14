@@ -94,13 +94,13 @@
 
             <!-- Heading -->
             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tighter leading-[1.1] mb-6">
-                Ruang Kreasi<br>
+                Ruang<br>
                 <span class="gradient-text">NabilaShifa</span>
             </h1>
 
             <!-- Subheading -->
             <p class="text-lg text-slate-500 max-w-xl mx-auto leading-relaxed mb-10">
-                Platform web yang kami bangun sebagai bagian dari Asistensi Mata Kuliah Pemrograman Web 1 — sederhana, bersih, dan fungsional.
+                Platform web yang kami bangun sebagai bagian dari tugas Asistensi Mata Kuliah Pemrograman Web 1 — sederhana, bersih, dan fungsional.
             </p>
 
             <!-- CTA Buttons -->
@@ -119,11 +119,6 @@
                 <div>
                     <p class="text-3xl font-extrabold text-slate-800">3+</p>
                     <p class="text-sm text-slate-400 mt-0.5">Halaman Website</p>
-                </div>
-                <div class="hidden sm:block w-px h-10 bg-slate-200"></div>
-                <div>
-                    <p class="text-3xl font-extrabold text-slate-800">100%</p>
-                    <p class="text-sm text-slate-400 mt-0.5">Responsif</p>
                 </div>
                 <div class="hidden sm:block w-px h-10 bg-slate-200"></div>
                 <div>
@@ -221,7 +216,7 @@
                             Lebih dari Sekadar<br>Tugas Kuliah
                         </h2>
                         <p class="text-slate-400 text-sm leading-relaxed mb-8">
-                            Website NabilaShifa merupakan hasil kerja keras tim dalam memahami konsep dasar pemrograman web — mulai dari struktur HTML, styling dengan CSS, hingga logika server-side dengan PHP.
+                            Website NabilaShifa merupakan hasil kerja tim dalam memahami konsep dasar pemrograman web, mulai dari struktur HTML, styling dengan CSS, hingga logika server-side dengan PHP.
                         </p>
                         <a href="/about" class="self-start inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors" style="text-decoration:none;">
                             Lihat Profil Tim
@@ -238,7 +233,7 @@
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-sm">Mata Kuliah</p>
-                                <p class="text-slate-400 text-sm mt-0.5">Pemrograman Web 1 — Asistensi Tugas 3</p>
+                                <p class="text-slate-400 text-sm mt-0.5">Pemrograman Web 1 — Asistensi Tugas 3 & 4</p>
                             </div>
                         </div>
 

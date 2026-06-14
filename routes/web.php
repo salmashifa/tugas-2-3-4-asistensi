@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelompokController;
@@ -11,9 +12,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+// Route::get('/about', function () {
+//     return view('about');
+// })->name('about');
+
+// ✅ Route baru (mengarah ke MemberController)
+Route::get('/about', [MemberController::class, 'index'])->name('about');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
@@ -31,8 +35,11 @@ Route::middleware('auth')->group(function () {
 });
 
 route::get('/', fn() => view('home'))->name('home');
-Route::get('/about', fn() => view('about'))->name('about');
+// Route::get('/about', fn() => view('about'))->name('about');
 Route::get('/contact', fn() => view('contact'))->name('contact');
+
+// Tambahkan resource CRUD
+Route::resource('members', MemberController::class);
 
 require __DIR__.'/auth.php';
 
