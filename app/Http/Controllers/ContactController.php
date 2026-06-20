@@ -3,60 +3,67 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+
 class ContactController extends Controller
 {
-    // READ - Menampilkan halaman kontak (Form input + List data CRUD di bawahnya)
-    // public function index()
-    // {
-    //     $messages = Contact::latest()->get();
-    //     return view('contact', compact('messages'));
-    // }
-    public function index()
+    /**
+     * Tampilkan halaman contact.
+     */
+    public function index(): View
     {
-    $messages = Contact::latest()->get(); 
-    
-    // Paksa Laravel membaca file contact yang berada langsung di folder views utama
-    return view('contact', compact('messages')); 
+        return view('contact');
     }
 
-    // CREATE - Menyimpan pesan baru dari form kontak
-    public function store(Request $request)
+    /**
+     * Tampilkan daftar pesan masuk (khusus admin/login).
+     */
+    public function adminIndex(): View
+    {
+        $contacts = Contact::latest()->paginate(10);
+
+        return view('admin.pesan', compact('contacts'));
+    }
+
+    /**
+     * Hapus satu pesan.
+     */
+    public function destroy($id): RedirectResponse
+    {
+        Contact::findOrFail($id)->delete();
+
+        return redirect()
+            ->route('contact.admin')
+            ->with('success', 'Pesan berhasil dihapus.');
+    }
+
+    /**
+     * Simpan pesan yang dikirim lewat form contact.
+     */
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string',
+            'nama'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'email', 'max:255'],
+            'subjek'   => ['required', 'string', 'max:255'],
+            'kategori' => ['nullable', 'string'],
+            'pesan'    => ['required', 'string', 'min:20'],
+        ], [
+            'nama.required'   => 'Nama wajib diisi.',
+            'email.required'  => 'Email wajib diisi.',
+            'email.email'     => 'Format email tidak valid.',
+            'subjek.required' => 'Subjek wajib diisi.',
+            'pesan.required'  => 'Pesan wajib diisi.',
+            'pesan.min'       => 'Pesan minimal 20 karakter.',
         ]);
 
         Contact::create($validated);
 
-        return redirect()->back()->with('success', 'Pesan Anda berhasil dikirim!');
-    }
-
-    // UPDATE - Mengedit pesan (bisa digunakan untuk panel admin / demonstrasi tugas CRUD)
-    public function update(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string',
-        ]);
-
-        $contact = Contact::findOrFail($id);
-        $contact->update($validated);
-
-        return redirect()->back()->with('success', 'Pesan berhasil diperbarui!');
-    }
-
-    // DELETE - Menghapus pesan
-    public function destroy($id)
-    {
-        $contact = Contact::findOrFail($id);
-        $contact->delete();
-
-        return redirect()->back()->with('success', 'Pesan berhasil dihapus!');
+        return redirect()
+            ->route('contact')
+            ->with('success', 'Terima kasih. Tim kami akan menghubungi kamu segera.');
     }
 }
+

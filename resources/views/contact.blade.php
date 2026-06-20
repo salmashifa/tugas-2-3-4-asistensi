@@ -191,7 +191,18 @@
                             <p class="text-sm text-slate-500">Isi semua kolom di bawah ini, lalu klik Kirim Pesan.</p>
                         </div>
 
-                        <form id="contactForm" method="POST" action="/contact" class="space-y-5">
+                        @if ($errors->any())
+                        <div class="mb-6 flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-5 py-4">
+                            <svg class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <div>
+                                <p class="text-sm font-semibold text-red-800">Pesan belum terkirim</p>
+                                <p class="text-sm text-red-700 mt-0.5">Periksa kembali kolom yang ditandai di bawah ini.</p>
+                            </div>
+                        </div>
+                        @endif
+
+                        <form id="contactForm" method="POST" action="{{ route('contact.store') }}" class="space-y-5">
+                            @csrf
 
                             <!-- Nama & Email row -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -202,9 +213,13 @@
                                         name="nama"
                                         type="text"
                                         placeholder="Contoh: Haikal"
-                                        class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400"
+                                        value="{{ old('nama') }}"
+                                        class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 @error('nama') border-red-400 @enderror"
                                         required
                                     />
+                                    @error('nama')
+                                        <p class="text-xs text-red-500 mt-1.5">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="email" class="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wide">Alamat Email</label>
@@ -213,9 +228,13 @@
                                         name="email"
                                         type="email"
                                         placeholder="kamu@email.com"
-                                        class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400"
+                                        value="{{ old('email') }}"
+                                        class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 @error('email') border-red-400 @enderror"
                                         required
                                     />
+                                    @error('email')
+                                        <p class="text-xs text-red-500 mt-1.5">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -227,9 +246,13 @@
                                     name="subjek"
                                     type="text"
                                     placeholder="Topik yang ingin kamu tanyakan"
-                                    class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400"
+                                    value="{{ old('subjek') }}"
+                                    class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 @error('subjek') border-red-400 @enderror"
                                     required
                                 />
+                                @error('subjek')
+                                    <p class="text-xs text-red-500 mt-1.5">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <!-- Kategori -->
@@ -241,10 +264,10 @@
                                     class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 appearance-none"
                                 >
                                     <option value="">Pilih kategori...</option>
-                                    <option value="pertanyaan">Pertanyaan Umum</option>
-                                    <option value="kolaborasi">Kolaborasi</option>
-                                    <option value="feedback">Feedback / Saran</option>
-                                    <option value="lainnya">Lainnya</option>
+                                    <option value="pertanyaan" @selected(old('kategori') == 'pertanyaan')>Pertanyaan Umum</option>
+                                    <option value="kolaborasi" @selected(old('kategori') == 'kolaborasi')>Kolaborasi</option>
+                                    <option value="feedback" @selected(old('kategori') == 'feedback')>Feedback / Saran</option>
+                                    <option value="lainnya" @selected(old('kategori') == 'lainnya')>Lainnya</option>
                                 </select>
                             </div>
 
@@ -256,10 +279,13 @@
                                     name="pesan"
                                     rows="5"
                                     placeholder="Tuliskan pesan kamu di sini..."
-                                    class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 resize-none"
+                                    class="form-input w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 resize-none @error('pesan') border-red-400 @enderror"
                                     required
-                                ></textarea>
+                                >{{ old('pesan') }}</textarea>
                                 <p class="text-xs text-slate-400 mt-1.5">Minimal 20 karakter.</p>
+                                @error('pesan')
+                                    <p class="text-xs text-red-500 mt-1.5">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <!-- Submit Button -->
@@ -273,16 +299,16 @@
 
                         </form>
 
-                        <!-- Success Notice (hidden by default, shown via PHP or JS) -->
-                        <?php if (!empty($_GET['success'])): ?>
+                        <!-- Success Notice (muncul otomatis setelah pesan berhasil disimpan) -->
+                        @if (session('success'))
                         <div class="fade-in-up mt-6 flex items-start gap-3 bg-green-50 border border-green-200 rounded-xl px-5 py-4">
                             <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             <div>
                                 <p class="text-sm font-semibold text-green-800">Pesan berhasil dikirim!</p>
-                                <p class="text-sm text-green-700 mt-0.5">Terima kasih. Tim kami akan menghubungi kamu segera.</p>
+                                <p class="text-sm text-green-700 mt-0.5">{{ session('success') }}</p>
                             </div>
                         </div>
-                        <?php endif; ?>
+                        @endif
 
                     </div>
                 </div>
@@ -352,7 +378,7 @@
 
             <!-- Footer Bottom -->
             <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
-                <p>&copy; <?= date('Y') ?> NabilaShifa. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} NabilaShifa. All rights reserved.</p>
                 <p>Dibuat dengan <span class="text-blue-400">♥</span> untuk Tugas Pemrograman Web 1</p>
             </div>
 

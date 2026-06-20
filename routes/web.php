@@ -12,11 +12,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-// Route::get('/about', function () {
-//     return view('about');
-// })->name('about');
-
-// ✅ Route baru (mengarah ke MemberController)
 Route::get('/about', [MemberController::class, 'index'])->name('about');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -27,6 +22,10 @@ Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->name('con
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/pesan', [ContactController::class, 'adminIndex'])->name('contact.admin');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
