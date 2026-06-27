@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\AboutController;
+use App\Models\Member;
 
-Route::get('/about', [AboutController::class, 'index'])->name('about'); 
-
-class AboutController extends Controller
+public function index()
 {
-    public function index()
-    {
-        return view('about');
-    }
+    $members = Member::latest()->get();
+
+    return view('about', compact('members'));
 }

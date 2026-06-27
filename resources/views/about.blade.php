@@ -225,56 +225,75 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
 
-                <!-- Anggota 1 -->
-                <div class="member-card-hover bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="bg-gradient-to-br from-blue-700 to-blue-500 p-8 text-center">
-                        <img src="{{ asset('image/alya.jpg') }}"
-                             class="w-24 h-24 rounded-full object-cover object-top border-4 border-white/40 mx-auto"
-                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                        <div style="display:none;" class="w-24 h-24 rounded-full bg-white/20 mx-auto items-center justify-center">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        </div>
-                    </div>
-                    <div class="p-7 text-center">
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">Alya Nabila</h3>
-                        <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">NIM: F1B250014</span>
-                        <p class="text-sm text-slate-500 mb-5 leading-relaxed">Mahasiswi Program Studi Sistem Informasi<br>Universitas Al-Ghifari</p>
-                        <div class="w-8 h-0.5 bg-blue-100 rounded mx-auto mb-5"></div>
-                        <a href="https://github.com/nbilaalya2406-eng" target="_blank"
-                           class="inline-flex items-center gap-2 bg-slate-800 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
-                           style="text-decoration:none;">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.579.688.481C19.138 20.2 22 16.447 22 12.021 22 6.484 17.522 2 12 2z"/></svg>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
-                <!-- Anggota 2 -->
-                <div class="member-card-hover bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="bg-gradient-to-br from-blue-700 to-blue-500 p-8 text-center">
-                        <img src="{{ asset('image/shifa.jpg') }}"
-                             class="w-24 h-24 rounded-full object-cover object-top border-4 border-white/40 mx-auto"
-                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                        <div style="display:none;" class="w-24 h-24 rounded-full bg-white/20 mx-auto items-center justify-center">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        </div>
-                    </div>
-                    <div class="p-7 text-center">
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">Shifa Salma</h3>
-                        <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">NIM: F1B250010</span>
-                        <p class="text-sm text-slate-500 mb-5 leading-relaxed">Mahasiswi Program Studi Sistem Informasi<br>Universitas Al-Ghifari</p>
-                        <div class="w-8 h-0.5 bg-blue-100 rounded mx-auto mb-5"></div>
-                        <a href="https://github.com/salmashifa" target="_blank"
-                           class="inline-flex items-center gap-2 bg-slate-800 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
-                           style="text-decoration:none;">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.579.688.481C19.138 20.2 22 16.447 22 12.021 22 6.484 17.522 2 12 2z"/></svg>
-                            GitHub
-                        </a>
-                    </div>
+    @foreach($members as $member)
+    <div class="member-card-hover bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+
+        <div class="bg-gradient-to-br from-blue-700 to-blue-500 p-8 text-center">
+
+            @if($member->photo)
+                <img src="{{ asset('storage/' . $member->photo) }}"
+                     alt="{{ $member->name }}"
+                     class="w-24 h-24 rounded-full object-cover object-top border-4 border-white/40 mx-auto">
+            @else
+                <div class="w-24 h-24 rounded-full bg-white/20 mx-auto flex items-center justify-center">
+                    <svg class="w-10 h-10 text-white"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.5"
+                         viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
                 </div>
-            </div>
+            @endif
+
         </div>
-    </section>
+
+        <div class="p-7 text-center">
+
+            <h3 class="text-lg font-bold text-slate-800 mb-2">
+                {{ $member->name }}
+            </h3>
+
+            <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                NIM : {{ $member->nim }}
+            </span>
+
+            <p class="text-sm uppercase text-slate-400 mb-3">
+                {{ $member->role }}
+            </p>
+
+            <p class="text-sm text-slate-500 leading-relaxed mb-5">
+                {{ $member->bio }}
+            </p>
+
+            <div class="w-8 h-0.5 bg-blue-100 rounded mx-auto mb-5"></div>
+
+            @if($member->github_url)
+            <a href="{{ $member->github_url }}"
+               target="_blank"
+               class="inline-flex items-center gap-2 bg-slate-800 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
+               style="text-decoration:none;">
+
+                <svg class="w-4 h-4"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.579.688.481C19.138 20.2 22 16.447 22 12.021 22 6.484 17.522 2 12 2z"/>
+                </svg>
+
+                GitHub
+
+            </a>
+            @endif
+
+        </div>
+
+    </div>
+    @endforeach
+
+</div>
 
 
     <!-- ═══════════════════════ CTA STRIP ═══════════════════════ -->

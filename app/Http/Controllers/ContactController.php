@@ -59,11 +59,15 @@ class ContactController extends Controller
             'pesan.min'       => 'Pesan minimal 20 karakter.',
         ]);
 
-        Contact::create($validated);
+        Contact::create([
+            'name'    => $validated['nama'],
+            'email'   => $validated['email'],
+            'subject' => $validated['subjek'],
+            'message' => $validated['pesan'],
+        ]);
 
         return redirect()
             ->route('contact')
             ->with('success', 'Terima kasih. Tim kami akan menghubungi kamu segera.');
     }
 }
-
